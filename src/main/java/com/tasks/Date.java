@@ -35,13 +35,20 @@ public class Date{
         DateTimeFormatter convertLongToStr = DateTimeFormat.forPattern("yyyy-MM-dd.HH.mm.ss.SS");
         System.out.println(convertLongToStr.print(longDate));
 
-//       String dayOfWeek = String.valueOf(dayOfWeek(longDate));
-//        System.out.println(dayOfWeek);
-//
-//
-//    }
-//    private static Object dayOfWeek(long longDate) {
-//        return String.valueOf(dayOfWeek(longDate));
+
+        System.out.println(currentDate.getDayOfWeek());
+
+
+
+    }
+    public boolean compareTwoDates() {
+        LocalDate today = LocalDate.now();
+        LocalDate compareDate = LocalDate.parse("2019-09-09");
+        if (today.toDateTimeAtStartOfDay().isEqual(compareDate.toDateTimeAtStartOfDay())){
+            System.out.println("Equals Dates");
+        }
+        return false;
+
     }
 
 }
