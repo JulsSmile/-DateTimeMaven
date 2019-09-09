@@ -36,10 +36,6 @@ public class Date{
         System.out.println(convertLongToStr.print(longDate));
 
 
-        System.out.println(currentDate.getDayOfWeek());
-
-
-
     }
     public boolean compareTwoDates() {
         LocalDate today = LocalDate.now();
