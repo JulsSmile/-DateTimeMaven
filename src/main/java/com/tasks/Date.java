@@ -32,9 +32,9 @@ public class Date {
         DateTimeFormatter convertLongToStr = DateTimeFormat.forPattern("yyyy-MM-dd.HH.mm.ss.SS");
         System.out.println("Formatted current date and time: " +convertLongToStr.print(longDate));
 
-        LocalDate dateInFuture = new LocalDate(968408900000L);
-        String dateInFutureFormatted = dateformatOut.print(dateInFuture);
-        boolean isBefore = currentDate.isBefore(dateInFuture);
+        LocalDate dateForCompare = new LocalDate(968498900000L);
+        String dateInFutureFormatted = dateformatOut.print(dateForCompare);
+        boolean isBefore = currentDate.isBefore(dateForCompare);
         System.out.println(currentDateFormatted + " is before " + dateInFutureFormatted + " : " + isBefore);
 
         DayOfWeek dayOfWeek = DayOfWeek.of(currentDate.getDayOfWeek());
