@@ -6,11 +6,13 @@ import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-public class Date{
+import java.time.DayOfWeek;
+
+public class Date {
     public static void main(String[] args) {
 
         LocalDate currentDate = LocalDate.now();
-        System.out.println(currentDate);
+        System.out.println("Current date: " +  currentDate);
         LocalDateTime currentTime = LocalDateTime.now();
 
 
@@ -18,17 +20,25 @@ public class Date{
         DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MM-dd");
         DateTime jodaTime = dtf.parseDateTime(date);
         DateTimeFormatter dtfOut = DateTimeFormat.forPattern("MM/dd/yyyy");
-        System.out.println(dtfOut.print(jodaTime));
+        System.out.println("Formatted current date: " + dtfOut.print(jodaTime));
         DateTimeFormatter dateformatOut = DateTimeFormat.forPattern("dd-MM-yyyy");
-        System.out.println(dateformatOut.print(jodaTime));
+        String currentDateFormatted = dateformatOut.print(jodaTime);
+        System.out.println("Formatted current date: " + currentDateFormatted);
 
-        System.out.println(jodaTime.withTimeAtStartOfDay().getMillis());
-        System.out.println(jodaTime.millisOfDay().withMaximumValue().getMillis());
+        System.out.println("Time in long at the start of day: " +  jodaTime.withTimeAtStartOfDay().getMillis());
+        long longDate = jodaTime.millisOfDay().withMaximumValue().getMillis();
+        System.out.println("Time in long at the end of day: " +  longDate);
 
+        DateTimeFormatter convertLongToStr = DateTimeFormat.forPattern("yyyy-MM-dd.HH.mm.ss.SS");
+        System.out.println("Formatted current date and time: " +convertLongToStr.print(longDate));
 
+        LocalDate dateInFuture = new LocalDate(968408900000L);
+        String dateInFutureFormatted = dateformatOut.print(dateInFuture);
+        boolean isBefore = currentDate.isBefore(dateInFuture);
+        System.out.println(currentDateFormatted + " is before " + dateInFutureFormatted + " : " + isBefore);
 
-
-
+        DayOfWeek dayOfWeek = DayOfWeek.of(currentDate.getDayOfWeek());
+        System.out.println("Current day of week is " + dayOfWeek);
     }
 }
 
