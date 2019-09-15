@@ -18,15 +18,15 @@ public class Date {
 
         String date = String.valueOf(currentDate);
         DateTimeFormatter dtf = DateTimeFormat.forPattern("yyyy-MM-dd");
-        DateTime jodaTime = dtf.parseDateTime(date);
+        DateTime formattedDate = dtf.parseDateTime(date);
         DateTimeFormatter dtfOut = DateTimeFormat.forPattern("MM/dd/yyyy");
-        System.out.println("Formatted current date: " + dtfOut.print(jodaTime));
+        System.out.println("Formatted current date: " + dtfOut.print(formattedDate));
         DateTimeFormatter dateformatOut = DateTimeFormat.forPattern("dd-MM-yyyy");
-        String currentDateFormatted = dateformatOut.print(jodaTime);
+        String currentDateFormatted = dateformatOut.print(formattedDate);
         System.out.println("Formatted current date: " + currentDateFormatted);
 
-        System.out.println("Time in long at the start of day: " +  jodaTime.withTimeAtStartOfDay().getMillis());
-        long longDate = jodaTime.millisOfDay().withMaximumValue().getMillis();
+        System.out.println("Time in long at the start of day: " +  formattedDate.withTimeAtStartOfDay().getMillis());
+        long longDate = formattedDate.millisOfDay().withMaximumValue().getMillis();
         System.out.println("Time in long at the end of day: " +  longDate);
 
         DateTimeFormatter convertLongToStr = DateTimeFormat.forPattern("yyyy-MM-dd.HH.mm.ss.SS");
